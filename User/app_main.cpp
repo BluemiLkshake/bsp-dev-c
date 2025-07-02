@@ -84,7 +84,7 @@ extern "C" void app_main(void) {
   STM32GPIO LED_R(LED_R_GPIO_Port, LED_R_Pin);
 
   std::array<uint32_t, 1> adc3_channels = {ADC_CHANNEL_8};
-  STM32ADC adc3(&hadc3, adc3_buf, adc3_channels, 3.3);
+  STM32ADC adc3(&hadc3, adc3_buf, &adc3_channels[0], 1, 3.3);
   auto adc3_adc_channel_8 = adc3.GetChannel(0);
   UNUSED(adc3_adc_channel_8);
 
@@ -175,7 +175,7 @@ extern "C" void app_main(void) {
   };
 
   /* User Code Begin 3 */
-  STM32Flash<FLASH_SECTOR_NUMBER, FLASH_SECTOR_NUMBER - 1> flash(FLASH_SECTORS);
+  STM32Flash flash(FLASH_SECTORS, FLASH_SECTOR_NUMBER);
   LibXR::DatabaseRaw<1> database(flash);
 
   peripherals.Register(LibXR::Entry<LibXR::Database>{database, {"database"}});
