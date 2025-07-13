@@ -2,9 +2,9 @@
 
 BSP Package for development board C.
 
-## Usage
+## Build in Terminal
 
-### Windows Ninja
+### Windows
 
 ```bash
 git clone https://github.com/QDU-Robomaster/bsp-dev-c
@@ -15,7 +15,9 @@ xr_cubemx_cfg -d ./ -c --xrobot
 xrobot_src_man create-sources
 xrobot_init_mod --config https://raw.githubusercontent.com/QDU-Robomaster/dev-c-robots/refs/heads/main/test.yaml --dir .\Modules\
 xrobot_setup
-cmake . -DCMAKE_TOOLCHAIN_FILE:STRING=cmake/gcc-arm-none-eabi.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -Bbuild -G Ninja
+$env:GCC_TOOLCHAIN_ROOT = "C:\Users\$env:USERNAME\AppData\Local\stm32cube\bundles\gnu-tools-for-stm32\${版本号}\bin"
+$env:CLANG_GCC_CMSIS_COMPILER = "C:\Users\$env:USERNAME\AppData\Local\stm32cube\bundles\st-arm-clang\${版本号}"
+cmake . -DCMAKE_TOOLCHAIN_FILE:STRING=cmake/starm-clang.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -Bbuild -G Ninja
 cmake --build build
 ls build/
 ```
@@ -31,7 +33,9 @@ xr_cubemx_cfg -d ./ -c --xrobot
 xrobot_src_man create-sources
 xrobot_init_mod --config https://raw.githubusercontent.com/QDU-Robomaster/dev-c-robots/refs/heads/main/test.yaml --dir ./Modules
 xrobot_setup
-cmake . -DCMAKE_TOOLCHAIN_FILE:STRING=cmake/gcc-arm-none-eabi.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -Bbuild -G Ninja
+export GCC_TOOLCHAIN_ROOT=/opt/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi/bin
+export CLANG_GCC_CMSIS_COMPILER=/opt/st-arm-clang
+cmake . -DCMAKE_TOOLCHAIN_FILE:STRING=cmake/starm-clang.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -Bbuild -G Ninja
 cmake --build build
 ls build/
 ```

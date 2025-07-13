@@ -1,9 +1,4 @@
 {
-    "cmake.configureSettings": {
-        // Specifies the path to the CMAKE toolchain file.
-        "CMAKE_TOOLCHAIN_FILE": "cmake/gcc-arm-none-eabi.cmake",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-    },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
@@ -49,4 +44,16 @@
     "cmake.parallelJobs": 8,
     "cmake.ctest.allowParallelJobs": true,
     "cmake.ctest.parallelJobs": 8,
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.configureArgs": [
+        "-DCMAKE_COMMAND=cube-cmake"
+    ],
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ],
+    "stm32cube-ide-clangd.path": "cube",
+    "stm32cube-ide-clangd.arguments": [
+        "starm-clangd",
+        "--query-driver=${env:CUBE_BUNDLE_PATH}/st-arm-clang/19.1.6+st.8/bin/starm-clang.exe"
+    ],
 }
