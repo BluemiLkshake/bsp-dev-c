@@ -168,3 +168,21 @@ modules:
     gyro_topic_name: bmi088_gyro
   template_args:
     MotorType: RMMotorContainer
+- id: SharedTopic_0
+  name: SharedTopic
+  constructor_args:
+    uart_name: uart_ai
+    task_stack_depth: 2048
+    buffer_size: 256
+    topic_configs:
+    - topic1
+    - - topic2
+      - libxr_def_domain
+- id: SharedTopicClient_0
+  name: SharedTopicClient
+  constructor_args:
+    uart_name: uart_ai
+    task_stack_depth: 2048
+    buffer_size: 256
+    topic_configs:
+    - ahrs_euler
