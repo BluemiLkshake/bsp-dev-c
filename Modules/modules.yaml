@@ -12,3 +12,4 @@ modules:
   - qdu-future/Motor
   - qdu-future/Chassis
   - qdu-future/Gimbal
+  - qdu-future/Launcher
