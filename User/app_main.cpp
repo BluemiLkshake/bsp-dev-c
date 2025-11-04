@@ -1,8 +1,6 @@
 #include "app_main.h"
 
-#include "app_framework.hpp"
 #include "cdc_uart.hpp"
-#include "flash_map.hpp"
 #include "libxr.hpp"
 #include "main.h"
 #include "stm32_adc.hpp"
@@ -19,6 +17,8 @@
 #include "stm32_uart.hpp"
 #include "stm32_usb_dev.hpp"
 #include "stm32_watchdog.hpp"
+#include "flash_map.hpp"
+#include "app_framework.hpp"
 #include "xrobot_main.hpp"
 
 using namespace LibXR;
@@ -74,7 +74,7 @@ extern "C" void app_main(void) {
   // clang-format on
   // NOLINTEND
   /* User Code Begin 2 */
-
+  
   /* User Code End 2 */
   // clang-format off
   // NOLINTBEGIN
