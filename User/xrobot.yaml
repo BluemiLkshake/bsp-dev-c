@@ -76,7 +76,7 @@ modules:
       reverse: false
   template_args:
     MotorType: RMMotorContainer
-- id: Omni_chassis
+- id: omni_chassis
   name: Chassis
   constructor_args:
     cmd: '@cmd'
@@ -168,14 +168,6 @@ modules:
     gyro_topic_name: bmi088_gyro
   template_args:
     MotorType: RMMotorContainer
-- id: SharedTopicClient_0
-  name: SharedTopicClient
-  constructor_args:
-    uart_name: uart_ai
-    task_stack_depth: 2048
-    buffer_size: 256
-    topic_configs:
-    - ahrs_euler
 - id: launcher
   name: Launcher
   constructor_args:
@@ -202,8 +194,6 @@ modules:
     num_trig_tooth: 0.0
     trig_gear_ratio: 0.0
     fric_radius: 0.0
-    cover_open_duty: 0.0
-    cover_close_duty: 0.0
     default_bullet_speed: 0.0
     min_launch_delay: 0.0
   template_args:
@@ -212,7 +202,24 @@ modules:
   name: EventBinder
   constructor_args:
     dr16: '@dr16'
-    chassis: '@Omni_chassis'
+    chassis: '@omni_chassis'
   template_args:
     ChassisType: Omni<RMMotorContainer>
     MotorType: RMMotorContainer
+- id: SharedTopic_0
+  name: SharedTopic
+  constructor_args:
+    uart_name: usart1
+    task_stack_depth: 2048
+    buffer_size: 256
+    topic_configs:
+    - fire_notify
+    - target_eulr
+- id: SharedTopicClient_0
+  name: SharedTopicClient
+  constructor_args:
+    uart_name: uart_ai
+    task_stack_depth: 2048
+    buffer_size: 256
+    topic_configs:
+    - ahrs_euler
