@@ -87,21 +87,21 @@ modules:
       reverse: false
   template_args:
     MotorType: RMMotorContainer
-- id: omni_chassis
+- id: mecanum_chassis
   name: Chassis
   constructor_args:
     cmd: '@cmd'
     motor_can1: '@motor_can1'
     motor_can2: '@motor_can2'
     task_stack_depth: 2048
-    wheel_radius: 72.0
-    wheel_to_center: 207.0
+    wheel_radius: 0.072
+    wheel_to_center: 0.207
     gravity_height: 0.0
     wheel_resistance: 0.0
     error_compensation: 0.0
     pid_velocity_x_:
       k: 1.0
-      p: 0.1
+      p: 0.001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -109,7 +109,7 @@ modules:
       cycle: false
     pid_velocity_y_:
       k: 1.0
-      p: 0.1
+      p: 0.001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -117,7 +117,7 @@ modules:
       cycle: false
     pid_omega_:
       k: 1.0
-      p: 0.1
+      p: 0.001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -125,7 +125,7 @@ modules:
       cycle: false
     pid_wheel_angle_0_:
       k: 1.0
-      p: 0.1
+      p: 0.00001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -133,7 +133,7 @@ modules:
       cycle: false
     pid_wheel_angle_1_:
       k: 1.0
-      p: 0.1
+      p: 0.00001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -141,7 +141,7 @@ modules:
       cycle: false
     pid_wheel_angle_2_:
       k: 1.0
-      p: 0.1
+      p: 0.00001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -149,7 +149,7 @@ modules:
       cycle: false
     pid_wheel_angle_3_:
       k: 1.0
-      p: 0.1
+      p: 0.00001
       i: 0.0
       d: 0.0
       i_limit: 0.0
@@ -188,7 +188,7 @@ modules:
       out_limit: 0.0
       cycle: false
   template_args:
-    ChassisType: Omni<RMMotorContainer>
+    ChassisType: Mecanum<RMMotorContainer>
     MotorType: RMMotorContainer
 - id: gimbal
   name: Gimbal
@@ -293,9 +293,9 @@ modules:
   name: EventBinder
   constructor_args:
     dr16: '@dr16'
-    chassis: '@omni_chassis'
+    chassis: '@mecanum_chassis'
   template_args:
-    ChassisType: Omni<RMMotorContainer>
+    ChassisType: Mecanum<RMMotorContainer>
     MotorType: RMMotorContainer
 - id: SharedTopic_0
   name: SharedTopic
