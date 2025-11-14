@@ -74,7 +74,7 @@ extern "C" void app_main(void) {
   // clang-format on
   // NOLINTEND
   /* User Code Begin 2 */
-  
+
   /* User Code End 2 */
   // clang-format off
   // NOLINTBEGIN
@@ -170,8 +170,8 @@ extern "C" void app_main(void) {
   usb_fs.Start();
 
   /* Terminal Configuration */
-  STDIO::read_ = usb_otg_fs_cdc.read_port_;
-  STDIO::write_ = usb_otg_fs_cdc.write_port_;
+  STDIO::read_ = usb_otg_hs_cdc.read_port_;
+  STDIO::write_ = usb_otg_hs_cdc.write_port_;
 
   RamFS ramfs("XRobot");
   Terminal<32, 32, 5, 5> terminal(ramfs);

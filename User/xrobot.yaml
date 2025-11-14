@@ -77,16 +77,28 @@ modules:
       model: Motor<RMMotorContainer>::Model::MOTOR_NONE
       reverse: false
     motor4:
-      model: Motor<RMMotorContainer>::Model::MOTOR_M3508
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
       reverse: false
     motor5:
-      model: Motor<RMMotorContainer>::Model::MOTOR_M3508
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
       reverse: false
     motor6:
-      model: Motor<RMMotorContainer>::Model::MOTOR_M3508
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
       reverse: false
     motor7:
-      model: Motor<RMMotorContainer>::Model::MOTOR_M3508
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor7:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor8:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor9:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor10:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
       reverse: false
   template_args:
     MotorType: RMMotorContainer
@@ -97,20 +109,50 @@ modules:
     motor0:
       model: Motor<RMMotorContainer>::Model::MOTOR_NONE
       reverse: false
+    motor1:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor2:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor3:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor4:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor5:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor6:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor7:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor8:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor9:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
+    motor10:
+      model: Motor<RMMotorContainer>::Model::MOTOR_NONE
+      reverse: false
   template_args:
     MotorType: RMMotorContainer
 - id: mecanum_chassis
   name: Chassis
   constructor_args:
     cmd: '@cmd'
-    motor_wheel_0: '@motor_can1.GetMotor(4)'
-    motor_wheel_1: '@motor_can1.GetMotor(5)'
-    motor_wheel_2: '@motor_can1.GetMotor(6)'
-    motor_wheel_3: '@motor_can1.GetMotor(7)'
-    motor_steer_0: '@motor_can1.GetMotor(0)'
-    motor_steer_1: '@motor_can1.GetMotor(1)'
-    motor_steer_2: '@motor_can1.GetMotor(2)'
-    motor_steer_3: '@motor_can1.GetMotor(3)'
+    motor_wheel_0: '@motor_can1.GetMotor(0)'
+    motor_wheel_1: '@motor_can1.GetMotor(1)'
+    motor_wheel_2: '@motor_can1.GetMotor(2)'
+    motor_wheel_3: '@motor_can1.GetMotor(3)'
+    motor_steer_0: '@motor_can1.GetMotor(4)'
+    motor_steer_1: '@motor_can1.GetMotor(5)'
+    motor_steer_2: '@motor_can1.GetMotor(6)'
+    motor_steer_3: '@motor_can1.GetMotor(7)'
     task_stack_depth: 4096
     wheel_radius: 0.072
     wheel_to_center: 0.207
@@ -209,6 +251,57 @@ modules:
   template_args:
     ChassisType: Omni<RMMotorContainer>
     MotorType: RMMotorContainer
+- id: gimbal
+  name: Gimbal
+  constructor_args:
+    task_stack_depth: 4096
+    param_pid_yaw_speed:
+      k: 1.0
+      p: 0.0
+      i: 0.0
+      d: 0.0
+      i_limit: 0.0
+      out_limit: 0.0
+      cycle: false
+    param_pid_yaw_angle:
+      k: 1.0
+      p: 0.0
+      i: 0.0
+      d: 0.0
+      i_limit: 0.0
+      out_limit: 0.0
+      cycle: false
+    param_pid_pitch_speed:
+      k: 1.0
+      p: 0.0
+      i: 0.0
+      d: 0.0
+      i_limit: 0.0
+      out_limit: 0.0
+      cycle: false
+    param_pid_pitch_angle:
+      k: 1.0
+      p: 0.0
+      i: 0.0
+      d: 0.0
+      i_limit: 0.0
+      out_limit: 0.0
+      cycle: false
+    motor_yaw: '@motor_can2.GetMotor(1)'
+    motor_pitch: '@motor_can2.GetMotor(2)'
+    gimbal_param:
+      I_pitch: 0.0
+      I_yaw: 0.0
+      M_pitch: 0.0
+      G_pitch: 0.0
+      pitch_min: 0.0
+      pitch_max: 0.0
+    gimbal_cmd_name_: gimbal_cmd
+    accl_name_: bmi088_accl
+    euler_name_: ahrs_euler
+    gyro_name_: bmi088_gyro
+  template_args:
+    MotorType: RMMotorContainer
 - id: launcher
   name: Launcher
   constructor_args:
@@ -230,8 +323,8 @@ modules:
       i_limit: 0.0
       out_limit: 0.0
       cycle: false
-    motor_fric_0: '@motor_can2.GetMotor(0)'
-    motor_fric_1: '@motor_can2.GetMotor(1)'
+    motor_fric_0: '@motor_can2.GetMotor(3)'
+    motor_fric_1: '@motor_can2.GetMotor(4)'
     motor_trig: '@motor_can2.GetMotor(2)'
     num_trig_tooth: 0.0
     trig_gear_ratio: 0.0
@@ -251,7 +344,7 @@ modules:
 - id: SharedTopic_0
   name: SharedTopic
   constructor_args:
-    uart_name: uart_ai
+    uart_name: usb_ai
     task_stack_depth: 2048
     buffer_size: 256
     topic_configs:
