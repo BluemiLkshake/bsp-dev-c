@@ -414,9 +414,11 @@ modules:
     - bindings:
       - source_module: dr16
         source_event: DR16::SwitchPos::DR16_SW_R_POS_TOP
+        target_module: launcher
         target_event: Launcher::FRICMODE::SAFE
       - source_module: dr16
         source_event: DR16::SwitchPos::DR16_SW_R_POS_BOT
+        target_module: launcher
         target_event: Launcher::FRICMODE::READY
   template_args:
     ChassisType: Omni
