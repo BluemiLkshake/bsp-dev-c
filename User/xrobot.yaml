@@ -122,12 +122,10 @@ modules:
     motor_yaw: '@&motor_yaw'
     cmd: '@&cmd'
     gimbal_param:
-      I_pitch: 0.0
-      I_yaw: 0.0
-      M_pitch: 0.0
-      G_pitch: 0.0
       pitch_min: 0.0
       pitch_max: 0.0
+      motor_is_reverse: false
+      yaw_offset: 0.0
 - id: SharedTopic_0
   name: SharedTopic
   constructor_args:
@@ -170,10 +168,10 @@ modules:
       - source_module: dr16
         source_event: DR16::SwitchPos::DR16_SW_R_POS_TOP
         target_module: gimbal
-        target_event: Gimbal::GimbalEvent::SET_MODE_RELAX
+        target_event: Gimbal::GimbalMode::RELAX
       - source_module: dr16
         source_event: DR16::SwitchPos::DR16_SW_R_POS_MID
         target_module: gimbal
-        target_event: Gimbal::GimbalEvent::SET_MODE_RELATIVE
+        target_event: Gimbal::GimbalMode::COMMON
   template_args:
     ChassisType: Omni
